@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday!</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Landing Page -->
+<div id="landing">
+  <button id="openBtn">Open 🎉</button>
+</div>
+
+<!-- Main Page -->
+<div id="main">
+  <h1>Happy 18th Birthday Baby 🎉</h1>
+
+  <!-- Slideshow -->
+  <div id="slideshow"></div>
+
+  <!-- Reveal Message Button -->
+  <a href="message.html" id="revealBtn">Read my message baby! 💌</a>
+
+  <!-- Music Button -->
+  <button id="playMusic">🎵 Play Music</button>
+</div>
+
+<!-- Modal for full-screen slideshow -->
+<div id="modal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImg">
+  <div id="caption"></div>
+  <a class="prev">&#10094;</a>
+  <a class="next">&#10095;</a>
+</div>
+
+<!-- Confetti Canvas -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- Audio -->
+<audio id="bgMusic" loop>
+  <source src="birthday_song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<!-- Custom Script -->
+<script src="script.js"></script>
+
+</body>
+</html>
