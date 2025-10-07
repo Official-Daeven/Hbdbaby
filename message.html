@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 18th Birthday</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+
+  #messagePage {
+    width: 90%;
+    max-width: 600px;
+    height: 80%;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden; /* prevents outside content */
+  }
+
+  /* Neon Curved Header */
+  .neon-header {
+    font-family: 'Arial', cursive;
+    font-size: 3em;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    transform: rotate(-2deg) skewX(-4deg);
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 40px #ff69b4,
+      0 0 80px #ff69b4;
+    margin-bottom: 20px;
+  }
+
+  /* Scrollable letter box */
+  #letter {
+    flex: 1;
+    width: 100%;
+    overflow-y: auto; /* scroll if text overflows */
+    padding-right: 10px;
+    text-align: left;
+  }
+
+  #letter p {
+    font-size: 1.1em;
+    line-height: 1.6em;
+    margin: 10px 0;
+  }
+
+  #playMusic {
+    margin-top: 20px;
+    font-size: 1em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    background: #ff69b4;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+
+  #playMusic:hover {
+    background: #ff85c1;
+    transform: scale(1.05);
+  }
+</style>
+</head>
+<body>
+<div id="messagePage">
+
+  <!-- Neon Curved Header -->
+  <h1 class="neon-header">Happy 18th Birthday Baby</h1>
+
+  <div id="letter">
+    <p>Dear langga💐,</p>
+    <p>Happy Birthday langga and wish nko imong good health and i hope na kita ra jpon inig next bday nimo and sorry wala koy ikahatag saimoha nga things kay wala ko money and next maka balos rko lang palitan tika puhon unsa mn imo gusto ah pero karun pasensya na haa bawi lang ko langga ha akoang ikahatag usa nimo run ay akoang pag ka loyal saimoha ang akoang powerful love and i hope you will be blessed by the god ug imong mga panahon nga lisud kaya rna ah basta huna-hunaa nga naa ko diri ga hatag ug full support imong sandigan langga and more power langga and again happy 18th birthday baby koo😘🥺💐.</p>
+    <p>With love,</p>
+    <p>Daeven Gascon</p>
+  </div>
+
+  <button id="playMusic">🔇 Pause Music</button>
+
+</div>
+
+<audio id="bgMusic" loop autoplay>
+  <source src="birthday_song.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+window.onload = function() {
+  const musicBtn = document.getElementById('playMusic');
+  const bgMusic = document.getElementById('bgMusic');
+
+  // Music toggle
+  musicBtn.addEventListener('click', () => {
+    if(bgMusic.paused){ 
+      bgMusic.play(); 
+      musicBtn.textContent='🔇 Pause Music'; 
+    } else { 
+      bgMusic.pause(); 
+      musicBtn.textContent='🎵 Play Music'; 
+    }
+  });
+
+  // Confetti burst
+  function triggerConfetti(){
+    confetti({
+      particleCount: 150,
+      spread: 90,
+      origin: { y: 0.6 },
+      colors: ['#ff69b4','#ffb6c1','#ffc0cb','#fff0f5']
+    });
+  }
+  for(let i=0;i<5;i++) triggerConfetti();
+
+  // Typewriter animation
+  const letter = document.getElementById('letter');
+  const paragraphs = Array.from(letter.querySelectorAll('p')).map(p => p.innerHTML);
+  letter.innerHTML = '';
+  let index = 0;
+
+  function typeParagraph(text){
+    const p = document.createElement('p');
+    letter.appendChild(p);
+    let i = 0;
+    function typeChar(){
+      if(i < text.length){
+        p.innerHTML += text.charAt(i);
+        i++;
+        requestAnimationFrame(typeChar);
+      } else {
+        index++;
+        if(index < paragraphs.length) typeParagraph(paragraphs[index]);
+      }
+    }
+    typeChar();
+  }
+
+  typeParagraph(paragraphs[index]);
+};
+</script>
+</body>
+</html>
